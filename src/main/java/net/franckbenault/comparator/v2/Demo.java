@@ -11,9 +11,13 @@ public class Demo {
 	public static void main(String[] args) {
 		List<Integer> list = new Random(2664).ints(32L,1000,1100).boxed().collect(toCollection(ArrayList::new));
 		
-		//error very difficult to debug...
-		//list.sort((a,b)-> a<b ? -1:a==b ? 0 :1);
-		list.sort(logging((a,b)-> a<b ? -1:a==b ? 0 :1));
+		//Integer == will not work
+		list.sort((a,b)-> a<b ? -1:a==b ? 0 :1);
+		//list.sort(logging((a,b)-> a<b ? -1:a==b ? 0 :1));
+		//good solutions
+		//list.sort((a,b)-> a<b ? -1:a>b ? 1 :0);
+		//list.sort(Integer::compare);
+		
 		
 		System.out.println(list);
 	}
