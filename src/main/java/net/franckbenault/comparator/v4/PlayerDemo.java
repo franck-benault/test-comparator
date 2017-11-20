@@ -5,6 +5,12 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
+import static java.util.Comparator.comparing;
+import static java.util.Comparator.comparingInt;
+import static java.util.Comparator.comparingDouble;
+import static java.util.Comparator.nullsFirst;
+import static java.util.Comparator.naturalOrder;
+
 public class PlayerDemo {
 
 	public static void main(String[] args) {
@@ -22,7 +28,31 @@ public class PlayerDemo {
 		//playerList.sort((a,b) -> a.getDisplayName().compareTo(b.getDisplayName()));
 		
 		//beter 
-		playerList.sort(Comparator.comparing(Player::getDisplayName));
+		//playerList.sort(Comparator.comparing(Player::getDisplayName));
 		
+		//beter with static import
+		//playerList.sort(comparing(Player::getDisplayName));
+
+		
+		//playerList.sort(comparing(Player::getDisplayName).reversed());
+	
+		//playerList.sort(comparingInt(Player::getGamesPlayed));
+
+		//playerList.sort(comparingDouble(Player::getRating).reversed());
+		
+		//nickname may be null -> null pointer exception
+		//playerList.sort(comparing(Player::getNickname));
+		
+		//still null pointer exception
+		//playerList.sort(nullsFirst(comparing(Player::getNickname)));
+	
+		//everybody wants to be spock
+		//playerList.sort(comparing(Player::getNickname,nullsFirst(naturalOrder())));
+		
+		//playerList.sort(comparing(Player::getNickname,nullsFirst(naturalOrder()))
+		//		.thenComparing(Player::getDisplayName));
+
+		playerList.sort(new TwoLevelComparatorBAD()::compare);
 	}
+	
 }

@@ -38,8 +38,9 @@ public class Player {
 		List<Player> players = new ArrayList<Player>();
 		players.add(new Player("Adam", null,10, 0.56));
 		players.add(new Player("Adim", "the best",12, 0.54));
-		players.add(new Player("Adoum", null,10, 0.57));
-		players.add(new Player("Adaman", "the dog",15, 0.16));
+		players.add(new Player("Adoum", null,11, 0.57));
+		players.add(new Player("Adaman", "spock",15, 0.16));
+		players.add(new Player("Adoumin", "spock",1, 0.17));
 		
 		return players;
 	}
