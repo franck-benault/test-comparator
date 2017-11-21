@@ -9,7 +9,9 @@ import static java.util.Comparator.comparing;
 import static java.util.Comparator.comparingInt;
 import static java.util.Comparator.comparingDouble;
 import static java.util.Comparator.nullsFirst;
+import static java.util.Comparator.nullsLast;
 import static java.util.Comparator.naturalOrder;
+import static java.util.Comparator.reverseOrder;
 
 public class PlayerDemo {
 
@@ -52,7 +54,17 @@ public class PlayerDemo {
 		//playerList.sort(comparing(Player::getNickname,nullsFirst(naturalOrder()))
 		//		.thenComparing(Player::getDisplayName));
 
-		playerList.sort(new TwoLevelComparatorBAD()::compare);
+		//playerList.sort(new TwoLevelComparatorBAD()::compare);
+		//playerList.sort(new TwoLevelComparatorGOOD()::compare);
+
+	
+		//playerList.sort(comparing(Player::getNickname,nullsLast(naturalOrder()))
+		//				.thenComparing(Player::getDisplayName));
+
+		
+		playerList.sort(comparing(Player::getNickname,nullsLast(naturalOrder()))
+				.thenComparing(Player::getDisplayName, reverseOrder()));
+	
 	}
 	
 }
